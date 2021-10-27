@@ -8,6 +8,7 @@ int yearOfManufacture;
 int numOfCylinders;
 string correctModel;
 string correctYear;
+string correctNumOfCil;
 string makefilterKey;
 string manfactureFilterKey;
 
@@ -60,14 +61,78 @@ void findMake() {
 
 }
 
+void getFilterKey() {
+	}
+
+
+
 void findCylinders() {
 	cout << "finally we must determin the number of cylinders from the data given before your car is a " << make << endl;
 	if (make == "ford" || make == "Ford") {
-		cout << "ford's either have an 6 or cylinder how many does your model have?" << endl;
+		cout << "ford's either have an 6 or 8 cylinders how many does your model have?" << endl;
 		cin >> numOfCylinders;
 		if (numOfCylinders == 6 || numOfCylinders == 8) {
 			cout << "So you have " << numOfCylinders << " ?  correct? please type either no or No if this incorrect and Yes or yes if this is correct" << endl;
-				
+			if (correctNumOfCil == "yes" || correctNumOfCil == "Yes") {
+				getFilterKey();
+			}else if (correctNumOfCil == "no" || correctNumOfCil == "No") {
+				findCylinders();
+			}
+			else {
+				cout << "I'm not sure what that means." << endl;
+				findCylinders();
+			}
+
+		}
+	}else if (make == "nisan" || make == "Nisan") {
+		cout << "nisans's either have an 6 or 4 cylinders how many does your model have?" << endl;
+		cin >> numOfCylinders;
+		if (numOfCylinders == 4 || numOfCylinders == 6) {
+			cout << "So you have " << numOfCylinders << " ?  correct? please type either no or No if this incorrect and Yes or yes if this is correct" << endl;
+			if (correctNumOfCil == "yes" || correctNumOfCil == "Yes") {
+				getFilterKey();
+			}
+			else if (correctNumOfCil == "no" || correctNumOfCil == "No") {
+				findCylinders();
+			}
+			else {
+				cout << "I'm not sure what that means." << endl;
+				findCylinders();
+			}
+
+		}
+	}else if (make == "volvo" || make == "Volvo") {
+		cout << "volvos's either have an 15 or 20 cylinders how many does your model have?" << endl;
+		cin >> numOfCylinders;
+		if (numOfCylinders == 15 || numOfCylinders == 20) {
+			cout << "So you have " << numOfCylinders << " ?  correct? please type either no or No if this incorrect and Yes or yes if this is correct" << endl;
+			if (correctNumOfCil == "yes" || correctNumOfCil == "Yes") {
+				getFilterKey();
+			}
+			else if (correctNumOfCil == "no" || correctNumOfCil == "No") {
+				findCylinders();
+			}
+			else {
+				cout << "I'm not sure what that means." << endl;
+				findCylinders();
+			}
+
+		}
+	}else if (make == "jaguar" || make == "Jaguar") {
+		cout << "jaguar's either have an 6 or 12 cylinders how many does your model have?" << endl;
+		cin >> numOfCylinders;
+		if (numOfCylinders == 6 || numOfCylinders == 12) {
+			cout << "So you have " << numOfCylinders << " ?  correct? please type either no or No if this incorrect and Yes or yes if this is correct" << endl;
+			if (correctNumOfCil == "yes" || correctNumOfCil == "Yes") {
+				getFilterKey();
+			}
+			else if (correctNumOfCil == "no" || correctNumOfCil == "No") {
+				findCylinders();
+			}
+			else {
+				cout << "I'm not sure what that means." << endl;
+				findCylinders();
+			}
 
 		}
 	}
@@ -95,7 +160,4 @@ void findManufactureYear() {
 			findManufactureYear;
 		}
 }
-
-
-
 
