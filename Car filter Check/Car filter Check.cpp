@@ -30,7 +30,7 @@ void findMake() {
 		if (correctModel == "No" || correctModel == "no") {
 			make = "";
 			findMake();
-		}else if (correctModel == "Yes" || correctModel == "yes" && make == "honda" || make == "Honda") {
+		}else if (correctModel == "Yes" || correctModel == "yes" && make == "ford" || make == "Ford") {
 			cout << "great your car is a honda. lets move onto the next piece of data" << endl;
 			makefilterKey = "H";
 			findManufactureYear();
@@ -61,6 +61,17 @@ void findMake() {
 }
 
 void findCylinders() {
+	cout << "finally we must determin the number of cylinders from the data given before your car is a " << make << endl;
+	if (make == "ford" || make == "Ford") {
+		cout << "ford's either have an 6 or cylinder how many does your model have?" << endl;
+		cin >> numOfCylinders;
+		if (numOfCylinders == 6 || numOfCylinders == 8) {
+			cout << "So you have " << numOfCylinders << " ?  correct? please type either no or No if this incorrect and Yes or yes if this is correct" << endl;
+				
+
+		}
+	}
+
 }
 
 void findManufactureYear() {
