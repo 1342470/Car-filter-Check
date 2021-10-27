@@ -2,15 +2,18 @@
 //
 #include <stdlib.h>
 #include <iostream>
+#include<string>
 using namespace std;
 string make;
 int yearOfManufacture;
 int numOfCylinders;
 string correctModel;
 string correctYear;
+string correctAgain;
 string correctNumOfCil;
 string makefilterKey;
 string manfactureFilterKey;
+string cylinderFilterKey;
 
 void exit(int status);
 
@@ -60,8 +63,27 @@ void findMake() {
 	}
 
 }
+void again(){
+	cin >> correctAgain;
+	if (correctAgain == "yes" || correctAgain == "Yes") {
+		main();
+	}
+	else if (correctNumOfCil == "no" || correctNumOfCil == "No") {
+		exit(0);
+	}
+	else {
+		cout << "I'm not sure what that means." << endl;
+		again();
+		}
+	}
+
 
 void getFilterKey() {
+	cout << "right so from the data you have given me you own a " << make << " that was manfactured in " << yearOfManufacture << " that has " << numOfCylinders << "from this data we have found you require a filter with the model of " << endl;
+	cout << makefilterKey << manfactureFilterKey << cylinderFilterKey << endl;
+	again();
+	
+
 	}
 
 
@@ -74,6 +96,7 @@ void findCylinders() {
 		if (numOfCylinders == 6 || numOfCylinders == 8) {
 			cout << "So you have " << numOfCylinders << " ?  correct? please type either no or No if this incorrect and Yes or yes if this is correct" << endl;
 			if (correctNumOfCil == "yes" || correctNumOfCil == "Yes") {
+				string cylinderFilterKey =to_string(numOfCylinders);
 				getFilterKey();
 			}else if (correctNumOfCil == "no" || correctNumOfCil == "No") {
 				findCylinders();
@@ -90,6 +113,7 @@ void findCylinders() {
 		if (numOfCylinders == 4 || numOfCylinders == 6) {
 			cout << "So you have " << numOfCylinders << " ?  correct? please type either no or No if this incorrect and Yes or yes if this is correct" << endl;
 			if (correctNumOfCil == "yes" || correctNumOfCil == "Yes") {
+				string cylinderFilterKey = to_string(numOfCylinders);
 				getFilterKey();
 			}
 			else if (correctNumOfCil == "no" || correctNumOfCil == "No") {
@@ -107,6 +131,7 @@ void findCylinders() {
 		if (numOfCylinders == 15 || numOfCylinders == 20) {
 			cout << "So you have " << numOfCylinders << " ?  correct? please type either no or No if this incorrect and Yes or yes if this is correct" << endl;
 			if (correctNumOfCil == "yes" || correctNumOfCil == "Yes") {
+				string cylinderFilterKey = to_string(numOfCylinders);
 				getFilterKey();
 			}
 			else if (correctNumOfCil == "no" || correctNumOfCil == "No") {
@@ -124,6 +149,7 @@ void findCylinders() {
 		if (numOfCylinders == 6 || numOfCylinders == 12) {
 			cout << "So you have " << numOfCylinders << " ?  correct? please type either no or No if this incorrect and Yes or yes if this is correct" << endl;
 			if (correctNumOfCil == "yes" || correctNumOfCil == "Yes") {
+				string cylinderFilterKey = to_string(numOfCylinders);
 				getFilterKey();
 			}
 			else if (correctNumOfCil == "no" || correctNumOfCil == "No") {
