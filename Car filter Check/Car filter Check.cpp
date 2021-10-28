@@ -12,19 +12,20 @@ string correctYear;
 string correctAgain;
 string correctNumOfCil;
 string makefilterKey;
-string manfactureFilterKey;
-string cylinderFilterKey;
+int manfactureFilterKey;
+int cylinderFilterKey;
 
 
 
 void exit(int status);
 
 void again() {
+	cout << "would you like to check for another filter?  please type either no or No if this incorrect and Yes or yes if this is correct" << endl;
 	cin >> correctAgain;
 	if (correctAgain == "yes" || correctAgain == "Yes") {
 		exit(42);
 	}
-	else if (correctNumOfCil == "no" || correctNumOfCil == "No") {
+	else if (correctAgain == "no" || correctAgain == "No") {
 		exit(0);
 	}
 	else {
@@ -42,14 +43,17 @@ void getFilterKey() {
 	}
 
 void findCylinders() {
-	cout << "finally we must determin the number of cylinders from the data given before your car is a " << make << endl;
+	cout << " finally we must determin the number of cylinders from the data given before your car is a " << make << endl;
 	if (make == "ford" || make == "Ford") {
-		cout << "ford's either have an 6 or 8 cylinders how many does your model have?" << endl;
-		cin >> numOfCylinders;
-		if (numOfCylinders == 6 || numOfCylinders == 8) {
+		while ((cout << "ford's either have an 6 or 8 cylinders how many does your model have?" << endl) && !(std::cin >> numOfCylinders)) {
+			cout << "That's not a vaild number; ";
+			cin.clear();
+			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		}if (numOfCylinders == 6 || numOfCylinders == 8) {
 			cout << "So you have " << numOfCylinders << " ?  correct? please type either no or No if this incorrect and Yes or yes if this is correct" << endl;
+			cin >> correctNumOfCil;
 			if (correctNumOfCil == "yes" || correctNumOfCil == "Yes") {
-				string cylinderFilterKey =to_string(numOfCylinders);
+				cylinderFilterKey = numOfCylinders;
 				getFilterKey();
 			}else if (correctNumOfCil == "no" || correctNumOfCil == "No") {
 				findCylinders();
@@ -60,13 +64,17 @@ void findCylinders() {
 			}
 
 		}
+		else { cout << "That's not a vaild number; "; findCylinders(); }
 	}else if (make == "nisan" || make == "Nisan") {
-		cout << "nisans's either have an 6 or 4 cylinders how many does your model have?" << endl;
-		cin >> numOfCylinders;
-		if (numOfCylinders == 4 || numOfCylinders == 6) {
+		while ((cout << "nisans's either have an 6 or 4 cylinders how many does your model have?" << endl) && !(std::cin >> numOfCylinders)) {
+			cout << "That's not a vaild number; ";
+			cin.clear();
+			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		}if (numOfCylinders == 6 || numOfCylinders == 4) {
 			cout << "So you have " << numOfCylinders << " ?  correct? please type either no or No if this incorrect and Yes or yes if this is correct" << endl;
+			cin >> correctNumOfCil;
 			if (correctNumOfCil == "yes" || correctNumOfCil == "Yes") {
-				string cylinderFilterKey = to_string(numOfCylinders);
+				cylinderFilterKey = numOfCylinders;
 				getFilterKey();
 			}
 			else if (correctNumOfCil == "no" || correctNumOfCil == "No") {
@@ -78,13 +86,17 @@ void findCylinders() {
 			}
 
 		}
-	}else if (make == "volvo" || make == "Volvo") {
-		cout << "volvos's either have an 15 or 20 cylinders how many does your model have?" << endl;
-		cin >> numOfCylinders;
-		if (numOfCylinders == 15 || numOfCylinders == 20) {
+		else { cout << "That's not a vaild number; "; findCylinders(); }
+	}else if (make == "volov" || make == "Volov") {
+		while ((cout << "volvos's either have an 15 or 20 cylinders how many does your model have?" << endl) && !(std::cin >> numOfCylinders)) {
+			cout << "That's not a vaild number; ";
+			cin.clear();
+			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		}if (numOfCylinders == 15 || numOfCylinders == 20) {
 			cout << "So you have " << numOfCylinders << " ?  correct? please type either no or No if this incorrect and Yes or yes if this is correct" << endl;
+			cin >> correctNumOfCil;
 			if (correctNumOfCil == "yes" || correctNumOfCil == "Yes") {
-				string cylinderFilterKey = to_string(numOfCylinders);
+				cylinderFilterKey = numOfCylinders;
 				getFilterKey();
 			}
 			else if (correctNumOfCil == "no" || correctNumOfCil == "No") {
@@ -96,13 +108,17 @@ void findCylinders() {
 			}
 
 		}
-	}else if (make == "jaguar" || make == "Jaguar") {
-		cout << "jaguar's either have an 6 or 12 cylinders how many does your model have?" << endl;
-		cin >> numOfCylinders;
-		if (numOfCylinders == 6 || numOfCylinders == 12) {
+		else { cout << "That's not a vaild number; "; findCylinders(); }
+	}else if (make == "jaguar"  || make == "Jaguar") {
+		while ((cout << "jaguar's either have an 6 or 12 cylinders how many does your model have?" << endl) && !(std::cin >> numOfCylinders)) {
+			cout << "That's not a vaild number; ";
+			cin.clear();
+			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		}if (numOfCylinders == 6 || numOfCylinders == 12) {
 			cout << "So you have " << numOfCylinders << " ?  correct? please type either no or No if this incorrect and Yes or yes if this is correct" << endl;
+			cin >> correctNumOfCil;
 			if (correctNumOfCil == "yes" || correctNumOfCil == "Yes") {
-				string cylinderFilterKey = to_string(numOfCylinders);
+				cylinderFilterKey = numOfCylinders;
 				getFilterKey();
 			}
 			else if (correctNumOfCil == "no" || correctNumOfCil == "No") {
@@ -113,10 +129,12 @@ void findCylinders() {
 				findCylinders();
 			}
 
+		}
+		else {
+			cout << "That's not a vaild number; "; findCylinders();
 		}
 	}
-
-}
+	}
 
 
 void findManufactureYear() {
@@ -169,7 +187,7 @@ void findMake() {
 			}
 			else if (correctModel == "Yes" || correctModel == "yes" && make == "ford" || make == "Ford") {
 				cout << "great your car is a ford. lets move onto the next piece of data" << endl;
-				makefilterKey = "H";
+				makefilterKey = "F";
 				findManufactureYear();
 			}
 			else if (correctModel == "Yes" || correctModel == "yes" && make == "nisan" || make == "Nisan") {
@@ -178,7 +196,7 @@ void findMake() {
 				findManufactureYear();
 			}
 			else if (correctModel == "Yes" || correctModel == "yes" && make == "volov" || make == "Volov") {
-				cout << "great your car is a volvo. lets move onto the next piece of data" << endl;
+				cout << "great your car is a volov. lets move onto the next piece of data" << endl;
 				makefilterKey = "V";
 				findManufactureYear();
 			}
