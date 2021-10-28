@@ -121,8 +121,11 @@ void findCylinders() {
 
 void findManufactureYear() {
 	while (yearOfManufacture == 0) {
-		cout << "Next please enter your cars year of manufacture " << endl;
-		cin >> yearOfManufacture;
+		while ((cout << "Next please enter your cars year of manufacture " << endl) && !(std::cin >> yearOfManufacture)) {
+			std::cout << "That's not a number; ";
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		}
 		if (yearOfManufacture >= 1995 && yearOfManufacture <= 2015) {
 			cout << "so your cars year of manufacture is " << yearOfManufacture << " ?  please type either no or No if this incorrect and Yes or yes if this is correct." << endl;
 			cin >> correctYear;
@@ -139,51 +142,58 @@ void findManufactureYear() {
 				exit(0);
 			}
 			else {
-				cout << "Invaild year; please enter a date between 1995 and 2015" << endl;
+				cout << "Invaild response" << endl;
 				yearOfManufacture = 0;
-				findManufactureYear;
+				findManufactureYear();
 			}
 		}
+		else {
+			cout << "Invaild year; please enter a date between 1995 and 2015" << endl;
+			yearOfManufacture = 0;
+			findManufactureYear();
+		}
 	}
+		
 }
 
 void findMake() {
-	while(make.empty()) {
-	cout << "the first piece of data we require is the make of your car please enter your car model" << endl;
-	cin >> make;
-	cout << "your car's model is " << make << " correct? please type either no or No if this incorrect and Yes or yes if this is correct" << endl;
-		cin >> correctModel;
-		if (correctModel == "No" || correctModel == "no") {
-			make = "";
-			findMake();
-		}else if (correctModel == "Yes" || correctModel == "yes" && make == "ford" || make == "Ford") {
-			cout << "great your car is a ford. lets move onto the next piece of data" << endl;
-			makefilterKey = "H";
-			findManufactureYear();
-		}else if (correctModel == "Yes" || correctModel == "yes" && make == "nisan" || make == "Nisan") {
-			cout << "great your car is a nisan. lets move onto the next piece of data" << endl;
-			makefilterKey = "N";
-			findManufactureYear();
-		}else if (correctModel == "Yes" || correctModel == "yes" && make == "volov" || make == "Volov") {
-			cout << "great your car is a volvo. lets move onto the next piece of data" << endl;
-			makefilterKey = "V";
-			findManufactureYear();
-		}else if (correctModel == "Yes" || correctModel == "yes" && make == "jaguar" || make == "Jaguar") {
-			cout << "great your car is a jaguar. lets move onto the next piece of data" << endl;
-			makefilterKey = "J";
-			findManufactureYear();
+	while (make.empty() || make == "") {
+		cout << "the first piece of data we require is the make of your car please enter your car model" << endl;
+		cin >> make;
+		if (make == "ford" || make == "Ford" || make == "nisan" || make == "Nisan" || make == "volov" || make == "Volov" || make == "jaguar" || make == "Jaguar") {
+			cout << "your car's model is " << make << " correct? please type either no or No if this incorrect and Yes or yes if this is correct" << endl;
+			cin >> correctModel;
+			if (correctModel == "No" || correctModel == "no") {
+				make = "";
+				findMake();
+			}
+			else if (correctModel == "Yes" || correctModel == "yes" && make == "ford" || make == "Ford") {
+				cout << "great your car is a ford. lets move onto the next piece of data" << endl;
+				makefilterKey = "H";
+				findManufactureYear();
+			}
+			else if (correctModel == "Yes" || correctModel == "yes" && make == "nisan" || make == "Nisan") {
+				cout << "great your car is a nisan. lets move onto the next piece of data" << endl;
+				makefilterKey = "N";
+				findManufactureYear();
+			}
+			else if (correctModel == "Yes" || correctModel == "yes" && make == "volov" || make == "Volov") {
+				cout << "great your car is a volvo. lets move onto the next piece of data" << endl;
+				makefilterKey = "V";
+				findManufactureYear();
+			}
+			else if (correctModel == "Yes" || correctModel == "yes" && make == "jaguar" || make == "Jaguar") {
+				cout << "great your car is a jaguar. lets move onto the next piece of data" << endl;
+				makefilterKey = "J";
+				findManufactureYear();
+			}
+			else { cout << "unknown response" << endl; make = ""; findMake(); };
 		}
 		else if (make == "quit" || make == "Quit") {
 			exit(0);
-		}
-		else {
-			cout << "unknown model" << endl;
-			make = "";
-			findMake();
-
-		};
+		
+		}else{cout << "unknown model" << endl; make = "";findMake();};
 	}
-
 }
 
 
